@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+// A very simple protocol definition, consisting of only
+// one message.
+
+message PromMessage {
+    enum promType {
+        UNKNOWN = 0;
+        WRITE = 1;
+        READ = 2;
+    };
+    promType type = 1;
+    bytes payload = 2; 
+}
+
