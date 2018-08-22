@@ -1,8 +1,9 @@
 syntax = "proto3";
+import "nanopb.proto";
 
 // A very simple protocol definition, consisting of only
 // one message.
-
+// 
 message PromMessage {
     enum promType {
         UNKNOWN = 0;
@@ -10,6 +11,24 @@ message PromMessage {
         READ = 2;
     };
     promType type = 1;
-    bytes payload = 2; 
+    uint32 page = 2; 
+    bytes payload = 3[(nanopb).max_size = 16];
+}
+
+
+message SerialMessage {
+
+    //values greater than 15 are reserved
+    //because we stuff extra info in the upper fields
+    enum serialAction {
+        UNKNOWN = 0;
+        WRITE_ACK = 1;
+        WRITE_NACK = 2;
+        READ_ACK = 3;
+        READ_NACK = 4;
+        STOP = 5;
+        START = 6;
+    };
+    repeated serialAction action = 1[(nanopb).max_count = 200];
 }
 
