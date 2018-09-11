@@ -9,7 +9,7 @@ option optimize_for = LITE_RUNTIME;
 message Sensor {
     enum sensorType {
         ANALOG = 0;
-        SOIL = 0;
+        SOIL = 1;
         BMP280 = 2;
     };
     sensorType sensor = 1;
