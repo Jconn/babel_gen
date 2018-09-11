@@ -1,9 +1,23 @@
 syntax = "proto3";
 import "nanopb.proto";
 
+
+option optimize_for = LITE_RUNTIME;
 // A very simple protocol definition, consisting of only
 // one message.
 // 
+message Sensor {
+    enum sensorType {
+        ANALOG = 0;
+        SOIL = 0;
+        BMP280 = 2;
+    };
+    sensorType sensor = 1;
+    fixed32 drive_type = 2;
+    fixed32 id = 3;
+}
+
+
 message PromMessage {
     enum promType {
         UNKNOWN = 0;
