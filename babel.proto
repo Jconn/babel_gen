@@ -11,6 +11,7 @@ message Sensor {
         ANALOG = 0;
         SOIL = 1;
         BMP280 = 2;
+        VEML_6070 = 3;
     };
     sensorType sensor = 1;
     fixed32 drive_type = 2;
