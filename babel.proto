@@ -57,11 +57,13 @@ message programTransfer {
         UNKNOWN = 0;
         BEGIN_MSG = 1;
         BLOCK_TRANSFER = 2;
+        END_MSG=3;
     };
     pTransferAction action = 1;
     oneof action_type {
-        bytes payload = 2[(nanopb).max_size = 16];
-        transferMetadata metaData = 3;
+        bytes payload = 2[(nanopb).max_size = 64];
+        uint32 crc = 3;
+        uint32 length = 4;
     };
 }
 
