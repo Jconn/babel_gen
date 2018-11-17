@@ -47,3 +47,21 @@ message SerialMessage {
     repeated serialAction action = 1[(nanopb).max_count = 200];
 }
 
+message transferMetadata {
+    uint32 crc = 1; 
+    uint32 length = 2; 
+}
+
+message programTransfer {
+    enum pTransferAction {
+        UNKNOWN = 0;
+        BEGIN_MSG = 1;
+        BLOCK_TRANSFER = 2;
+    };
+    pTransferAction action = 1;
+    oneof action_type {
+        bytes payload = 2[(nanopb).max_size = 16];
+        transferMetadata metaData = 3;
+    };
+}
+
