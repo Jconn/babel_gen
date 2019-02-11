@@ -55,9 +55,10 @@ message transferMetadata {
 message programTransfer {
     enum pTransferAction {
         UNKNOWN = 0;
-        BEGIN_MSG = 1;
+        BEGIN_FILE_MESSAGE = 1;
         BLOCK_TRANSFER = 2;
         END_MSG=3;
+        BEGIN_CAL_MESSAGE = 4;
     };
     pTransferAction action = 1;
     oneof action_type {
